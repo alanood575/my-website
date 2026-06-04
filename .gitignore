@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Claude Code local files
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

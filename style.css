@@ -809,3 +809,23 @@ a { text-decoration: none; color: inherit; }
   color: var(--text-muted);
   font-size: 1rem;
 }
+
+/* ========================
+   ADMIN LINK + EXTRAS
+======================== */
+.nav-admin {
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+.nav-admin:hover {
+  background: var(--gold);
+  color: var(--deep);
+}
+.footer-admin-link {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.footer-admin-link:hover { color: var(--gold); }

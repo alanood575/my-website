@@ -1,5 +1,57 @@
 'use strict';
 
+// ── Data Layer (shared with admin dashboard) ───────────
+const MK = { settings: 'mk_settings', gallery: 'mk_gallery', occasions: 'mk_occasions' };
+
+const DEF_SETTINGS = {
+  siteTitle: 'مخطوط',
+  siteSub: 'الخط العربي',
+  heroTitle: 'اكتب اسمك بأجمل الخطوط العربية',
+  heroDesc: 'حوّل اسمك أو أي نص إلى لوحة فنية بخطوط عربية أصيلة، وحمّلها بخلفية شفافة',
+  footerDesc: 'حافظ على جمال الخط العربي',
+};
+
+const DEF_GALLERY = [
+  { id: 1, text: 'بسم الله', font: 'Amiri', color: '#8B6914', frame: 'ornate', size: 90 },
+  { id: 2, text: 'محمد', font: 'Scheherazade New', color: '#1B4332', frame: 'floral', size: 110 },
+  { id: 3, text: 'الله أكبر', font: 'Lateef', color: '#1d3557', frame: 'geometric', size: 85 },
+  { id: 4, text: 'نور', font: 'Amiri', color: '#6B2737', frame: 'oval', size: 130 },
+  { id: 5, text: 'فاطمة', font: 'Reem Kufi', color: '#5c2d91', frame: 'diamond', size: 100 },
+  { id: 6, text: 'الحمد لله', font: 'Noto Naskh Arabic', color: '#8B6914', frame: 'ornate', size: 80 },
+  { id: 7, text: 'سارة', font: 'Lateef', color: '#1B4332', frame: 'none', size: 130 },
+  { id: 8, text: 'عمر', font: 'Noto Kufi Arabic', color: '#1a1a2e', frame: 'geometric', size: 120 },
+];
+
+const DEF_OCCASIONS = [
+  { id: 'wedding', name: 'حفل زفاف', icon: '💍', text: 'بالرفاء والبنين', font: 'Amiri', color: '#8B6914', frame: 'ornate', size: 90 },
+  { id: 'newborn', name: 'مولود جديد', icon: '👶', text: 'مبارك المولود', font: 'Scheherazade New', color: '#1B4332', frame: 'floral', size: 95 },
+  { id: 'eid', name: 'عيد مبارك', icon: '🌙', text: 'كل عام وأنتم بخير', font: 'Amiri', color: '#8B6914', frame: 'geometric', size: 80 },
+  { id: 'graduation', name: 'تخرج', icon: '🎓', text: 'ألف مبروك التخرج', font: 'Reem Kufi', color: '#5c2d91', frame: 'diamond', size: 82 },
+  { id: 'ramadan', name: 'رمضان', icon: '✨', text: 'رمضان كريم', font: 'Lateef', color: '#6B2737', frame: 'oval', size: 105 },
+  { id: 'quran', name: 'آيات قرآنية', icon: '📖', text: 'بسم الله الرحمن الرحيم', font: 'Amiri', color: '#1B4332', frame: 'ornate', size: 70 },
+];
+
+function getData(key, def) {
+  try {
+    const v = localStorage.getItem(key);
+    return v ? JSON.parse(v) : structuredClone(def);
+  } catch (e) {
+    return structuredClone(def);
+  }
+}
+
+function applySettings() {
+  const s = getData(MK.settings, DEF_SETTINGS);
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  set('siteTitleEl', s.siteTitle);
+  set('siteSubEl', s.siteSub);
+  set('heroTitleEl', s.heroTitle);
+  set('heroDescEl', s.heroDesc);
+  set('footerLogoEl', s.siteTitle);
+  set('footerDescEl', s.footerDesc);
+  if (s.siteTitle) document.title = `${s.siteTitle} – الخط العربي والمخطوطات`;
+}
+
 // ── State ──────────────────────────────────────────────
 const state = {
   text: 'محمد',
@@ -306,19 +358,11 @@ function downloadCanvas(transparent) {
 }
 
 // ── Gallery ─────────────────────────────────────────────
-const galleryItems = [
-  { text: 'بسم الله', font: 'Amiri', color: '#8B6914', frame: 'ornate', size: 90 },
-  { text: 'محمد', font: 'Scheherazade New', color: '#1B4332', frame: 'floral', size: 110 },
-  { text: 'الله أكبر', font: 'Lateef', color: '#1d3557', frame: 'geometric', size: 85 },
-  { text: 'نور', font: 'Amiri', color: '#6B2737', frame: 'oval', size: 130 },
-  { text: 'فاطمة', font: 'Reem Kufi', color: '#5c2d91', frame: 'diamond', size: 100 },
-  { text: 'الحمد لله', font: 'Noto Naskh Arabic', color: '#8B6914', frame: 'ornate', size: 80 },
-  { text: 'سارة', font: 'Lateef', color: '#1B4332', frame: 'none', size: 130 },
-  { text: 'عمر', font: 'Noto Kufi Arabic', color: '#1a1a2e', frame: 'geometric', size: 120 },
-];
-
 function buildGallery() {
   const grid = document.getElementById('galleryGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  const galleryItems = getData(MK.gallery, DEF_GALLERY);
   galleryItems.forEach(item => {
     const div = document.createElement('div');
     div.className = 'gallery-item';
@@ -365,24 +409,39 @@ function buildGallery() {
 }
 
 // ── Occasions ───────────────────────────────────────────
-const occasionData = {
-  wedding:    { text: 'بالرفاء والبنين', font: 'Amiri', color: '#8B6914', frame: 'ornate', size: 90 },
-  newborn:    { text: 'مبارك المولود', font: 'Scheherazade New', color: '#1B4332', frame: 'floral', size: 95 },
-  eid:        { text: 'كل عام وأنتم بخير', font: 'Amiri', color: '#8B6914', frame: 'geometric', size: 80 },
-  graduation: { text: 'ألف مبروك التخرج', font: 'Reem Kufi', color: '#5c2d91', frame: 'diamond', size: 82 },
-  ramadan:    { text: 'رمضان كريم', font: 'Lateef', color: '#6B2737', frame: 'oval', size: 105 },
-  quran:      { text: 'بسم الله الرحمن الرحيم', font: 'Amiri', color: '#1B4332', frame: 'ornate', size: 70 },
-};
+function buildOccasions() {
+  const grid = document.getElementById('occGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  const occasions = getData(MK.occasions, DEF_OCCASIONS);
+  occasions.forEach(o => {
+    const card = document.createElement('div');
+    card.className = 'occasion-card';
+    card.innerHTML = `
+      <div class="occasion-icon">${o.icon || '✦'}</div>
+      <h3>${o.name}</h3>
+      <p>${o.text}</p>
+      <button class="btn-occasion">استخدم التصميم</button>`;
+    card.querySelector('.btn-occasion').addEventListener('click', () => loadOccasion(o.id));
+    grid.appendChild(card);
+  });
+}
 
-window.loadOccasion = function (key) {
-  const d = occasionData[key];
+function loadOccasion(id) {
+  const occasions = getData(MK.occasions, DEF_OCCASIONS);
+  const d = occasions.find(o => o.id === id);
   if (!d) return;
-  Object.assign(state, d);
+  state.text = d.text;
+  state.font = d.font;
+  state.color = d.color;
+  state.frame = d.frame;
+  state.fontSize = d.size;
   syncUI();
   render();
   document.getElementById('generator').scrollIntoView({ behavior: 'smooth' });
   showToast('تم تحميل تصميم المناسبة');
-};
+}
+window.loadOccasion = loadOccasion;
 
 // ── Sync UI to State ─────────────────────────────────────
 function syncUI() {
@@ -511,9 +570,11 @@ function initEvents() {
 
 // ── Init ────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  applySettings();
   // Wait for fonts
   document.fonts.ready.then(() => {
     render();
+    buildOccasions();
     buildGallery();
   });
   initEvents();

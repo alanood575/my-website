@@ -14,14 +14,15 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="logo">
-        <span class="logo-text">مخطوط</span>
-        <span class="logo-sub">الخط العربي</span>
+        <span class="logo-text" id="siteTitleEl">مخطوط</span>
+        <span class="logo-sub" id="siteSubEl">الخط العربي</span>
       </div>
       <nav class="nav">
         <a href="#generator" class="nav-link active">المولّد</a>
         <a href="#occasions" class="nav-link">المناسبات</a>
         <a href="#gallery" class="nav-link">المعرض</a>
         <a href="#courses" class="nav-link">الدورات</a>
+        <a href="admin.html" class="nav-link nav-admin">لوحة التحكم</a>
       </nav>
     </div>
   </header>
@@ -30,8 +31,8 @@
   <section class="hero">
     <div class="hero-bg-text">بِسْمِ اللَّهِ</div>
     <div class="hero-content">
-      <h1 class="hero-title">اكتب اسمك<br/>بأجمل الخطوط العربية</h1>
-      <p class="hero-desc">حوّل اسمك أو أي نص إلى لوحة فنية بخطوط عربية أصيلة، وحمّلها بخلفية شفافة</p>
+      <h1 class="hero-title" id="heroTitleEl">اكتب اسمك بأجمل الخطوط العربية</h1>
+      <p class="hero-desc" id="heroDescEl">حوّل اسمك أو أي نص إلى لوحة فنية بخطوط عربية أصيلة، وحمّلها بخلفية شفافة</p>
       <a href="#generator" class="btn-primary">ابدأ الآن</a>
     </div>
     <div class="hero-samples">
@@ -167,44 +168,7 @@
       <h2 class="section-title">تصاميم المناسبات</h2>
       <p class="section-sub">اختر مناسبتك وخصّص النص بسهولة</p>
 
-      <div class="occasions-grid">
-        <div class="occasion-card" data-occasion="wedding">
-          <div class="occasion-icon">💍</div>
-          <h3>حفل زفاف</h3>
-          <p>بالرفاء والبنين</p>
-          <button class="btn-occasion" onclick="loadOccasion('wedding')">استخدم التصميم</button>
-        </div>
-        <div class="occasion-card" data-occasion="newborn">
-          <div class="occasion-icon">👶</div>
-          <h3>مولود جديد</h3>
-          <p>مبارك المولود</p>
-          <button class="btn-occasion" onclick="loadOccasion('newborn')">استخدم التصميم</button>
-        </div>
-        <div class="occasion-card" data-occasion="eid">
-          <div class="occasion-icon">🌙</div>
-          <h3>عيد مبارك</h3>
-          <p>كل عام وأنتم بخير</p>
-          <button class="btn-occasion" onclick="loadOccasion('eid')">استخدم التصميم</button>
-        </div>
-        <div class="occasion-card" data-occasion="graduation">
-          <div class="occasion-icon">🎓</div>
-          <h3>تخرج</h3>
-          <p>ألف مبروك التخرج</p>
-          <button class="btn-occasion" onclick="loadOccasion('graduation')">استخدم التصميم</button>
-        </div>
-        <div class="occasion-card" data-occasion="ramadan">
-          <div class="occasion-icon">✨</div>
-          <h3>رمضان</h3>
-          <p>رمضان كريم</p>
-          <button class="btn-occasion" onclick="loadOccasion('ramadan')">استخدم التصميم</button>
-        </div>
-        <div class="occasion-card" data-occasion="quran">
-          <div class="occasion-icon">📖</div>
-          <h3>آيات قرآنية</h3>
-          <p>بسم الله الرحمن الرحيم</p>
-          <button class="btn-occasion" onclick="loadOccasion('quran')">استخدم التصميم</button>
-        </div>
-      </div>
+      <div class="occasions-grid" id="occGrid"></div>
     </div>
   </section>
 
@@ -292,8 +256,9 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <span class="footer-logo">مخطوط</span>
-      <p>حافظ على جمال الخط العربي</p>
+      <span class="footer-logo" id="footerLogoEl">مخطوط</span>
+      <p id="footerDescEl">حافظ على جمال الخط العربي</p>
+      <a href="admin.html" class="footer-admin-link">لوحة التحكم</a>
     </div>
   </footer>
 

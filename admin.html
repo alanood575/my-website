@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مخطوط — لوحة التحكم</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&family=Scheherazade+New:wght@400;700&family=Lateef&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- ===================== LOGIN SCREEN ===================== -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-box">
+      <div class="login-logo">مخطوط</div>
+      <div class="login-sub">لوحة التحكم</div>
+      <input type="password" id="passInput" class="login-input" placeholder="كلمة المرور" />
+      <div id="loginError" class="login-error"></div>
+      <button id="loginBtn" class="btn-login">دخول</button>
+      <div class="login-hint">كلمة المرور الافتراضية: admin</div>
+    </div>
+  </div>
+
+  <!-- ===================== ADMIN APP ===================== -->
+  <div id="adminApp" class="admin-app" style="display:none">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-title">مخطوط</span>
+        <span class="brand-sub">لوحة التحكم</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="snav-item" data-panel="dashboard">الرئيسية</a>
+        <a href="#" class="snav-item" data-panel="gallery">المعرض</a>
+        <a href="#" class="snav-item" data-panel="occasions">المناسبات</a>
+        <a href="#" class="snav-item" data-panel="settings">إعدادات الموقع</a>
+        <a href="#" class="snav-item" data-panel="security">الأمان</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="index.html" class="sidebar-link">← زيارة الموقع</a>
+        <button id="logoutBtn" class="btn-logout">تسجيل الخروج</button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="admin-main">
+      <header class="topbar">
+        <button id="sidebarToggle" class="sidebar-toggle" aria-label="القائمة">☰</button>
+        <h1 id="adminPageTitle" class="topbar-title">الرئيسية</h1>
+        <a href="index.html" target="_blank" class="topbar-link">عرض الموقع ↗</a>
+      </header>
+
+      <div class="panels-wrap">
+
+        <!-- DASHBOARD -->
+        <section class="admin-panel" id="panel-dashboard">
+          <div class="stat-cards">
+            <div class="stat-card stat-gold">
+              <div class="stat-num" id="statGallery">0</div>
+              <div class="stat-label">أعمال المعرض</div>
+            </div>
+            <div class="stat-card stat-green">
+              <div class="stat-num" id="statOccasions">0</div>
+              <div class="stat-label">المناسبات</div>
+            </div>
+            <div class="stat-card stat-blue">
+              <div class="stat-num">6</div>
+              <div class="stat-label">الخطوط</div>
+            </div>
+            <div class="stat-card stat-purple">
+              <div class="stat-num">6</div>
+              <div class="stat-label">الإطارات</div>
+            </div>
+          </div>
+          <h2 class="section-heading">إجراءات سريعة</h2>
+          <div class="quick-actions">
+            <button class="quick-btn" onclick="showPanel('gallery')">إدارة المعرض</button>
+            <button class="quick-btn" onclick="showPanel('occasions')">إدارة المناسبات</button>
+            <button class="quick-btn" onclick="showPanel('settings')">إعدادات الموقع</button>
+            <button class="quick-btn quick-danger" onclick="resetAllData()">إعادة تعيين البيانات</button>
+          </div>
+        </section>
+
+        <!-- GALLERY -->
+        <section class="admin-panel" id="panel-gallery">
+          <div class="panel-header">
+            <h2>إدارة المعرض</h2>
+            <button id="addGalleryBtn" class="btn-add">+ إضافة عمل</button>
+          </div>
+
+          <div id="galleryForm" class="item-form" style="display:none">
+            <h3 id="formTitle">إضافة عمل جديد</h3>
+            <div class="form-grid">
+              <label>النص
+                <input type="text" id="gfText" placeholder="أدخل النص" />
+              </label>
+              <label>الخط
+                <select id="gfFont">
+                  <option value="Amiri">أميري</option>
+                  <option value="Scheherazade New">شهرزاد</option>
+                  <option value="Lateef">لطيف</option>
+                  <option value="Reem Kufi">ريم كوفي</option>
+                  <option value="Noto Naskh Arabic">نسخ</option>
+                  <option value="Noto Kufi Arabic">كوفي</option>
+                </select>
+              </label>
+              <label>اللون
+                <input type="color" id="gfColor" value="#8B6914" />
+              </label>
+              <label>الإطار
+                <select id="gfFrame">
+                  <option value="none">بلا إطار</option>
+                  <option value="ornate">زخرفي</option>
+                  <option value="geometric">هندسي</option>
+                  <option value="floral">زهري</option>
+                  <option value="oval">بيضاوي</option>
+                  <option value="diamond">معين</option>
+                </select>
+              </label>
+              <label>الحجم
+                <input type="range" id="gfSize" min="40" max="200" value="90" />
+                <span id="gfSizeLabel">90px</span>
+              </label>
+              <div class="form-preview">
+                <canvas id="gfCanvas" width="200" height="200"></canvas>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button id="saveGalleryBtn" class="btn-save">حفظ</button>
+              <button id="cancelGalleryBtn" class="btn-cancel">إلغاء</button>
+            </div>
+          </div>
+
+          <table id="galleryTable" class="data-table">
+            <thead>
+              <tr>
+                <th>معاينة</th>
+                <th>النص</th>
+                <th>الخط</th>
+                <th>الإطار</th>
+                <th>الحجم</th>
+                <th>الإجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="galleryTbody"></tbody>
+          </table>
+        </section>
+
+        <!-- OCCASIONS -->
+        <section class="admin-panel" id="panel-occasions">
+          <div class="panel-header">
+            <h2>إدارة المناسبات</h2>
+          </div>
+          <div id="occasionsEditor" class="occasions-editor"></div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section class="admin-panel" id="panel-settings">
+          <div class="panel-header">
+            <h2>إعدادات الموقع</h2>
+          </div>
+          <div class="settings-form">
+            <label>عنوان الموقع
+              <input type="text" id="sfTitle" />
+            </label>
+            <label>العنوان الفرعي
+              <input type="text" id="sfSub" />
+            </label>
+            <label>عنوان القسم الرئيسي
+              <input type="text" id="sfHeroTitle" />
+            </label>
+            <label>وصف القسم الرئيسي
+              <textarea id="sfHeroDesc" rows="3"></textarea>
+            </label>
+            <label>وصف التذييل
+              <input type="text" id="sfFooterDesc" />
+            </label>
+            <button id="saveSettingsBtn" class="btn-save-settings">حفظ الإعدادات</button>
+          </div>
+        </section>
+
+        <!-- SECURITY -->
+        <section class="admin-panel" id="panel-security">
+          <div class="panel-header">
+            <h2>الأمان</h2>
+          </div>
+          <div class="settings-form">
+            <label>كلمة المرور الحالية
+              <input type="password" id="oldPass" />
+            </label>
+            <label>كلمة المرور الجديدة
+              <input type="password" id="newPass" />
+            </label>
+            <label>تأكيد كلمة المرور
+              <input type="password" id="confirmPass" />
+            </label>
+            <div id="passMsg" class="pass-msg"></div>
+            <button id="changePassBtn" class="btn-save-settings">تغيير كلمة المرور</button>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="adminToast" class="admin-toast"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
