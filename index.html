@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مخطوط – الخط العربي والمخطوطات</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Scheherazade+New:wght@400;500;600;700&family=Lateef:wght@200;300;400;500;600;700;800&family=Reem+Kufi:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-text">مخطوط</span>
+        <span class="logo-sub">الخط العربي</span>
+      </div>
+      <nav class="nav">
+        <a href="#generator" class="nav-link active">المولّد</a>
+        <a href="#occasions" class="nav-link">المناسبات</a>
+        <a href="#gallery" class="nav-link">المعرض</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg-text">بِسْمِ اللَّهِ</div>
+    <div class="hero-content">
+      <h1 class="hero-title">اكتب اسمك<br/>بأجمل الخطوط العربية</h1>
+      <p class="hero-desc">حوّل اسمك أو أي نص إلى لوحة فنية بخطوط عربية أصيلة، وحمّلها بخلفية شفافة</p>
+      <a href="#generator" class="btn-primary">ابدأ الآن</a>
+    </div>
+    <div class="hero-samples">
+      <span class="sample s1">أحمد</span>
+      <span class="sample s2">نور</span>
+      <span class="sample s3">محمد</span>
+      <span class="sample s4">فاطمة</span>
+    </div>
+  </section>
+
+  <!-- Generator -->
+  <section id="generator" class="section generator-section">
+    <div class="container">
+      <h2 class="section-title">مولّد الأسماء والنصوص</h2>
+      <p class="section-sub">اكتب اسمك واختر الخط والتصميم المناسب</p>
+
+      <div class="generator-layout">
+        <!-- Controls -->
+        <div class="controls-panel">
+
+          <!-- Text Input -->
+          <div class="control-group">
+            <label>النص أو الاسم</label>
+            <input type="text" id="nameInput" placeholder="اكتب اسمك هنا..." value="محمد" maxlength="40" />
+          </div>
+
+          <!-- Font Selector -->
+          <div class="control-group">
+            <label>نوع الخط</label>
+            <div class="font-grid" id="fontGrid">
+              <button class="font-btn active" data-font="Amiri" data-weight="700">
+                <span class="font-preview" style="font-family:'Amiri'">أبجد</span>
+                <span class="font-name">أميري</span>
+              </button>
+              <button class="font-btn" data-font="Scheherazade New" data-weight="700">
+                <span class="font-preview" style="font-family:'Scheherazade New'">أبجد</span>
+                <span class="font-name">شهرزاد</span>
+              </button>
+              <button class="font-btn" data-font="Lateef" data-weight="700">
+                <span class="font-preview" style="font-family:'Lateef'">أبجد</span>
+                <span class="font-name">لطيف</span>
+              </button>
+              <button class="font-btn" data-font="Reem Kufi" data-weight="700">
+                <span class="font-preview" style="font-family:'Reem Kufi'">أبجد</span>
+                <span class="font-name">ريم كوفي</span>
+              </button>
+              <button class="font-btn" data-font="Noto Naskh Arabic" data-weight="700">
+                <span class="font-preview" style="font-family:'Noto Naskh Arabic'">أبجد</span>
+                <span class="font-name">نسخ</span>
+              </button>
+              <button class="font-btn" data-font="Noto Kufi Arabic" data-weight="700">
+                <span class="font-preview" style="font-family:'Noto Kufi Arabic'">أبجد</span>
+                <span class="font-name">كوفي</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Color -->
+          <div class="control-group">
+            <label>لون الخط</label>
+            <div class="color-palette" id="colorPalette">
+              <button class="color-btn active" data-color="#1a1a2e" style="background:#1a1a2e" title="أسود عميق"></button>
+              <button class="color-btn" data-color="#8B6914" style="background:#8B6914" title="ذهبي"></button>
+              <button class="color-btn" data-color="#6B2737" style="background:#6B2737" title="أحمر عميق"></button>
+              <button class="color-btn" data-color="#1B4332" style="background:#1B4332" title="أخضر عميق"></button>
+              <button class="color-btn" data-color="#1d3557" style="background:#1d3557" title="أزرق ملكي"></button>
+              <button class="color-btn" data-color="#5c2d91" style="background:#5c2d91" title="بنفسجي"></button>
+              <button class="color-btn" data-color="#C0392B" style="background:#C0392B" title="أحمر"></button>
+              <button class="color-btn custom-color-btn" data-color="#000000" title="اختر لوناً">
+                <span>🎨</span>
+              </button>
+            </div>
+            <input type="color" id="customColor" style="display:none" />
+          </div>
+
+          <!-- Font Size -->
+          <div class="control-group">
+            <label>حجم الخط: <span id="sizeLabel">120</span>px</label>
+            <input type="range" id="fontSize" min="40" max="240" value="120" class="range-slider" />
+          </div>
+
+          <!-- Frame Style -->
+          <div class="control-group">
+            <label>الإطار والتصميم</label>
+            <div class="frame-grid" id="frameGrid">
+              <button class="frame-btn active" data-frame="none">بلا إطار</button>
+              <button class="frame-btn" data-frame="ornate">زخرفي</button>
+              <button class="frame-btn" data-frame="geometric">هندسي</button>
+              <button class="frame-btn" data-frame="floral">زهري</button>
+              <button class="frame-btn" data-frame="oval">بيضاوي</button>
+              <button class="frame-btn" data-frame="diamond">معين</button>
+            </div>
+          </div>
+
+          <!-- Background for preview -->
+          <div class="control-group">
+            <label>خلفية المعاينة</label>
+            <div class="bg-options">
+              <button class="bg-btn active" data-bg="transparent">شفاف</button>
+              <button class="bg-btn" data-bg="white">أبيض</button>
+              <button class="bg-btn" data-bg="dark">داكن</button>
+              <button class="bg-btn" data-bg="parchment">رق</button>
+            </div>
+          </div>
+
+          <!-- Download Buttons -->
+          <div class="download-group">
+            <button class="btn-download" id="downloadPNG">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              تحميل PNG شفاف
+            </button>
+            <button class="btn-download secondary" id="downloadPNGbg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              تحميل مع خلفية
+            </button>
+          </div>
+        </div>
+
+        <!-- Canvas Preview -->
+        <div class="preview-panel">
+          <div class="preview-wrapper" id="previewWrapper">
+            <canvas id="calligraphyCanvas"></canvas>
+          </div>
+          <p class="preview-hint">المعاينة المباشرة</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Occasions -->
+  <section id="occasions" class="section occasions-section">
+    <div class="container">
+      <h2 class="section-title">تصاميم المناسبات</h2>
+      <p class="section-sub">اختر مناسبتك وخصّص النص بسهولة</p>
+
+      <div class="occasions-grid">
+        <div class="occasion-card" data-occasion="wedding">
+          <div class="occasion-icon">💍</div>
+          <h3>حفل زفاف</h3>
+          <p>بالرفاء والبنين</p>
+          <button class="btn-occasion" onclick="loadOccasion('wedding')">استخدم التصميم</button>
+        </div>
+        <div class="occasion-card" data-occasion="newborn">
+          <div class="occasion-icon">👶</div>
+          <h3>مولود جديد</h3>
+          <p>مبارك المولود</p>
+          <button class="btn-occasion" onclick="loadOccasion('newborn')">استخدم التصميم</button>
+        </div>
+        <div class="occasion-card" data-occasion="eid">
+          <div class="occasion-icon">🌙</div>
+          <h3>عيد مبارك</h3>
+          <p>كل عام وأنتم بخير</p>
+          <button class="btn-occasion" onclick="loadOccasion('eid')">استخدم التصميم</button>
+        </div>
+        <div class="occasion-card" data-occasion="graduation">
+          <div class="occasion-icon">🎓</div>
+          <h3>تخرج</h3>
+          <p>ألف مبروك التخرج</p>
+          <button class="btn-occasion" onclick="loadOccasion('graduation')">استخدم التصميم</button>
+        </div>
+        <div class="occasion-card" data-occasion="ramadan">
+          <div class="occasion-icon">✨</div>
+          <h3>رمضان</h3>
+          <p>رمضان كريم</p>
+          <button class="btn-occasion" onclick="loadOccasion('ramadan')">استخدم التصميم</button>
+        </div>
+        <div class="occasion-card" data-occasion="quran">
+          <div class="occasion-icon">📖</div>
+          <h3>آيات قرآنية</h3>
+          <p>بسم الله الرحمن الرحيم</p>
+          <button class="btn-occasion" onclick="loadOccasion('quran')">استخدم التصميم</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section gallery-section">
+    <div class="container">
+      <h2 class="section-title">معرض الأعمال</h2>
+      <p class="section-sub">أمثلة على ما يمكنك إنشاؤه</p>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-logo">مخطوط</span>
+      <p>حافظ على جمال الخط العربي</p>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
