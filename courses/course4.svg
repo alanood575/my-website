@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" font-family="'Amiri','Scheherazade New',serif">
+  <defs>
+    <linearGradient id="g4bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3e9d4"/>
+      <stop offset="1" stop-color="#e3d2af"/>
+    </linearGradient>
+    <linearGradient id="g4ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6b4a2a"/>
+      <stop offset="1" stop-color="#3e2a16"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#g4bg)"/>
+  <rect x="30" y="30" width="740" height="740" rx="14" fill="none" stroke="#8a6a34" stroke-width="2" opacity="0.6"/>
+
+  <text x="400" y="150" text-anchor="middle" fill="#8a6a34" font-size="40" letter-spacing="6">— دورات —</text>
+  <text x="400" y="280" text-anchor="middle" fill="url(#g4ink)" font-size="122" font-weight="700">الخط العربي</text>
+  <text x="400" y="350" text-anchor="middle" fill="#6b4a2a" font-size="42" font-weight="700">تعلّم فنون الخط خطوة بخطوة</text>
+
+  <!-- features -->
+  <g fill="#3e2a16" font-size="30" text-anchor="end">
+    <g stroke="#8a6a34" stroke-width="2.5" fill="none">
+      <path d="M250 440 l24 0 -12 50 z" fill="#8a6a34"/>
+    </g>
+    <text x="560" y="455">دورات من الصفر حتى الاحتراف</text>
+
+    <circle cx="262" cy="520" r="13" fill="none" stroke="#8a6a34" stroke-width="2.5"/>
+    <path d="M256 520 l5 5 9 -10" stroke="#8a6a34" stroke-width="2.5" fill="none"/>
+    <text x="560" y="530">إشراف نخبة من المدربين</text>
+
+    <g transform="translate(250 580)">
+      <circle cx="12" cy="6" r="11" fill="none" stroke="#8a6a34" stroke-width="2.5"/>
+      <path d="M5 18 l-3 14 10 -6 10 6 -3 -14" fill="#8a6a34"/>
+    </g>
+    <text x="560" y="600">شهادة معتمدة في نهاية الدورة</text>
+  </g>
+
+  <!-- ink pot + pen -->
+  <g>
+    <rect x="600" y="560" width="70" height="60" rx="8" fill="url(#g4ink)"/>
+    <ellipse cx="635" cy="560" rx="35" ry="10" fill="#2a1c0f"/>
+    <g transform="translate(635 540) rotate(28)" stroke="url(#g4ink)" stroke-width="5" fill="none" stroke-linecap="round">
+      <line x1="0" y1="0" x2="0" y2="-130"/>
+      <path d="M-6 0 L6 0 L0 22 Z" fill="url(#g4ink)"/>
+    </g>
+  </g>
+
+  <rect x="170" y="680" width="460" height="64" rx="32" fill="url(#g4ink)"/>
+  <text x="400" y="722" text-anchor="middle" fill="#f3e9d4" font-size="30" font-weight="700">خطٌ جميل .. هويةٌ متكاملة</text>
+</svg>

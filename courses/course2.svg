@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" font-family="'Amiri','Scheherazade New',serif">
+  <defs>
+    <linearGradient id="g2bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f3b38"/>
+      <stop offset="1" stop-color="#082420"/>
+    </linearGradient>
+    <linearGradient id="g2gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0d488"/>
+      <stop offset="1" stop-color="#b8923a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#g2bg)"/>
+
+  <!-- mosque arch -->
+  <path d="M150 720 L150 320 Q150 170 400 110 Q650 170 650 320 L650 720 Z"
+        fill="none" stroke="url(#g2gold)" stroke-width="4"/>
+  <path d="M180 720 L180 330 Q180 195 400 140 Q620 195 620 330 L620 720 Z"
+        fill="none" stroke="url(#g2gold)" stroke-width="1.5" opacity="0.5"/>
+
+  <text x="400" y="250" text-anchor="middle" fill="url(#g2gold)" font-size="40" letter-spacing="6">— دورات —</text>
+  <text x="400" y="370" text-anchor="middle" fill="#f3ead1" font-size="110" font-weight="700">الخط العربي</text>
+  <text x="400" y="430" text-anchor="middle" fill="url(#g2gold)" font-size="40">من الحرف إلى الإبداع</text>
+
+  <!-- 4 circular icons -->
+  <g>
+    <circle cx="230" cy="540" r="42" fill="none" stroke="url(#g2gold)" stroke-width="2.5"/>
+    <text x="230" y="555" text-anchor="middle" fill="url(#g2gold)" font-size="40">أ</text>
+    <text x="230" y="615" text-anchor="middle" fill="#e9e0c8" font-size="22">الأساسيات</text>
+
+    <circle cx="343" cy="540" r="42" fill="none" stroke="url(#g2gold)" stroke-width="2.5"/>
+    <path d="M335 520 l16 0 -8 44 z" fill="url(#g2gold)"/>
+    <text x="343" y="615" text-anchor="middle" fill="#e9e0c8" font-size="22">المهارات</text>
+
+    <circle cx="457" cy="540" r="42" fill="none" stroke="url(#g2gold)" stroke-width="2.5"/>
+    <circle cx="457" cy="540" r="14" fill="none" stroke="url(#g2gold)" stroke-width="3"/>
+    <text x="457" y="615" text-anchor="middle" fill="#e9e0c8" font-size="22">تطبيقات</text>
+
+    <circle cx="570" cy="540" r="42" fill="none" stroke="url(#g2gold)" stroke-width="2.5"/>
+    <circle cx="570" cy="535" r="13" fill="none" stroke="url(#g2gold)" stroke-width="2.5"/>
+    <path d="M563 548 l-4 16 11 -7 11 7 -4 -16" fill="url(#g2gold)"/>
+    <text x="570" y="615" text-anchor="middle" fill="#e9e0c8" font-size="22">شهادة</text>
+  </g>
+
+  <rect x="190" y="680" width="420" height="64" rx="32" fill="url(#g2gold)" opacity="0.15"/>
+  <rect x="190" y="680" width="420" height="64" rx="32" fill="none" stroke="url(#g2gold)" stroke-width="2"/>
+  <text x="400" y="722" text-anchor="middle" fill="url(#g2gold)" font-size="30" font-weight="700">خطّك .. يعكس ذوقك وشخصيتك</text>
+</svg>

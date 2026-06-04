@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" font-family="'Amiri','Scheherazade New',serif">
+  <defs>
+    <linearGradient id="g3bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16294f"/>
+      <stop offset="1" stop-color="#0b1730"/>
+    </linearGradient>
+    <linearGradient id="g3gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#edd07f"/>
+      <stop offset="1" stop-color="#b08d39"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#g3bg)"/>
+
+  <!-- corner ornaments -->
+  <g stroke="url(#g3gold)" stroke-width="2.5" fill="none">
+    <path d="M40 110 L40 40 L110 40"/>
+    <path d="M760 110 L760 40 L690 40"/>
+    <path d="M40 690 L40 760 L110 760"/>
+    <path d="M760 690 L760 760 L690 760"/>
+  </g>
+
+  <text x="400" y="150" text-anchor="middle" fill="url(#g3gold)" font-size="42" letter-spacing="6">— دورات —</text>
+  <text x="400" y="275" text-anchor="middle" fill="#f3ead1" font-size="120" font-weight="700">الخط العربي</text>
+  <text x="400" y="345" text-anchor="middle" fill="url(#g3gold)" font-size="44">إتقان الخط .. جمالٌ يُكتب</text>
+
+  <!-- 4 icon columns -->
+  <g fill="#e9e0c8" font-size="22" text-anchor="middle">
+    <g stroke="url(#g3gold)" stroke-width="2.5" fill="none">
+      <circle cx="200" cy="480" r="34"/>
+      <path d="M200 460 l0 40 M188 470 l24 0" />
+    </g>
+    <text x="200" y="545">أنواع الخطوط</text>
+
+    <g stroke="url(#g3gold)" stroke-width="2.5" fill="none">
+      <circle cx="333" cy="480" r="34"/>
+      <path d="M320 495 q13 -25 26 0"/>
+      <circle cx="333" cy="470" r="5"/>
+    </g>
+    <text x="333" y="545">دروس مباشرة</text>
+
+    <g stroke="url(#g3gold)" stroke-width="2.5" fill="none">
+      <circle cx="467" cy="480" r="34"/>
+      <rect x="451" y="466" width="32" height="26" rx="3"/>
+      <path d="M451 474 l32 0"/>
+    </g>
+    <text x="467" y="545">مواعيد مرنة</text>
+
+    <g stroke="url(#g3gold)" stroke-width="2.5" fill="none">
+      <circle cx="600" cy="480" r="34"/>
+      <circle cx="600" cy="474" r="11"/>
+      <path d="M593 486 l-4 16 11 -7 11 7 -4 -16" fill="url(#g3gold)"/>
+    </g>
+    <text x="600" y="545">شهادة معتمدة</text>
+  </g>
+
+  <!-- ink pen -->
+  <g transform="translate(400 600)" stroke="url(#g3gold)" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M-90 40 L70 -40" stroke-width="6"/>
+    <path d="M70 -40 l30 -14 -14 30 z" fill="url(#g3gold)"/>
+  </g>
+
+  <rect x="180" y="690" width="440" height="62" rx="31" fill="none" stroke="url(#g3gold)" stroke-width="2"/>
+  <text x="400" y="731" text-anchor="middle" fill="url(#g3gold)" font-size="30">اكتشف جمال الخط العربي وابدع فيه</text>
+</svg>
