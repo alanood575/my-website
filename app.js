@@ -26,18 +26,22 @@ function drawOrnateFrame(ctx, w, h, color) {
   ctx.strokeStyle = color;
   ctx.lineWidth = 2.5;
 
+  // Outer rectangle
   roundRect(ctx, m, m, w - m * 2, h - m * 2, 10);
   ctx.stroke();
 
+  // Inner rectangle
   roundRect(ctx, m + 12, m + 12, w - (m + 12) * 2, h - (m + 12) * 2, 6);
   ctx.stroke();
 
+  // Corner ornaments
   const cs = 28;
   const corners = [
     [m, m], [w - m, m], [m, h - m], [w - m, h - m]
   ];
   corners.forEach(([cx, cy]) => drawCornerFlower(ctx, cx, cy, cs, color));
 
+  // Top/bottom dividers
   const midX = w / 2;
   drawDiamond(ctx, midX, m, 12, color);
   drawDiamond(ctx, midX, h - m, 12, color);
@@ -50,20 +54,27 @@ function drawGeometricFrame(ctx, w, h, color) {
   ctx.lineWidth = 2;
   const m = 20;
 
+  // Star-like corners
   ctx.beginPath();
   ctx.rect(m, m, w - m * 2, h - m * 2);
   ctx.stroke();
 
+  // Geometric corner cuts
   const cuts = 24;
+  // Top-left
   ctx.beginPath();
   ctx.moveTo(m + cuts, m); ctx.lineTo(m, m + cuts); ctx.stroke();
+  // Top-right
   ctx.beginPath();
   ctx.moveTo(w - m - cuts, m); ctx.lineTo(w - m, m + cuts); ctx.stroke();
+  // Bottom-left
   ctx.beginPath();
   ctx.moveTo(m + cuts, h - m); ctx.lineTo(m, h - m - cuts); ctx.stroke();
+  // Bottom-right
   ctx.beginPath();
   ctx.moveTo(w - m - cuts, h - m); ctx.lineTo(w - m, h - m - cuts); ctx.stroke();
 
+  // Inner diamond border
   const im = m + 10;
   ctx.setLineDash([6, 4]);
   ctx.beginPath();
@@ -81,6 +92,7 @@ function drawFloralFrame(ctx, w, h, color) {
   roundRect(ctx, m, m, w - m * 2, h - m * 2, 20);
   ctx.stroke();
 
+  // Floral dots along edges
   const count = 14;
   for (let i = 0; i <= count; i++) {
     const t = i / count;
@@ -111,7 +123,7 @@ function drawOvalFrame(ctx, w, h, color) {
   ctx.ellipse(cx, cy, rx - 10, ry - 10, 0, 0, Math.PI * 2);
   ctx.stroke();
 
-  ctx.fillStyle = color;
+  // Small dots around ellipse
   for (let a = 0; a < Math.PI * 2; a += Math.PI / 12) {
     const px = cx + (rx - 5) * Math.cos(a);
     const py = cy + (ry - 5) * Math.sin(a);
@@ -202,6 +214,7 @@ function drawFlowerDot(ctx, cx, cy, r, color) {
 function render() {
   ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
 
+  // Background
   if (state.bgPreview === 'white') {
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
@@ -211,6 +224,7 @@ function render() {
   } else if (state.bgPreview === 'parchment') {
     ctx.fillStyle = '#f5e6c8';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+    // Subtle texture lines
     ctx.strokeStyle = 'rgba(0,0,0,0.04)';
     ctx.lineWidth = 1;
     for (let y = 0; y < CANVAS_H; y += 8) {
@@ -220,13 +234,16 @@ function render() {
       ctx.stroke();
     }
   }
+  // transparent: nothing drawn
 
+  // Frame
   if (state.frame === 'ornate') drawOrnateFrame(ctx, CANVAS_W, CANVAS_H, state.color);
   else if (state.frame === 'geometric') drawGeometricFrame(ctx, CANVAS_W, CANVAS_H, state.color);
   else if (state.frame === 'floral') drawFloralFrame(ctx, CANVAS_W, CANVAS_H, state.color);
   else if (state.frame === 'oval') drawOvalFrame(ctx, CANVAS_W, CANVAS_H, state.color);
   else if (state.frame === 'diamond') drawDiamondFrame(ctx, CANVAS_W, CANVAS_H, state.color);
 
+  // Text
   const fontStr = `${state.fontWeight} ${state.fontSize}px '${state.font}', serif`;
   ctx.font = fontStr;
   ctx.fillStyle = state.color;
@@ -234,6 +251,7 @@ function render() {
   ctx.textBaseline = 'middle';
   ctx.direction = 'rtl';
 
+  // Shadow / glow for dark backgrounds
   if (state.bgPreview === 'dark') {
     ctx.shadowColor = state.color;
     ctx.shadowBlur = 18;
@@ -263,6 +281,7 @@ function downloadCanvas(transparent) {
     ectx.fillRect(0, 0, CANVAS_W, CANVAS_H);
   }
 
+  // Redraw frame
   if (state.frame === 'ornate') drawOrnateFrame(ectx, CANVAS_W, CANVAS_H, state.color);
   else if (state.frame === 'geometric') drawGeometricFrame(ectx, CANVAS_W, CANVAS_H, state.color);
   else if (state.frame === 'floral') drawFloralFrame(ectx, CANVAS_W, CANVAS_H, state.color);
@@ -309,9 +328,11 @@ function buildGallery() {
     c.height = 300;
     const gctx = c.getContext('2d');
 
+    // parchment bg
     gctx.fillStyle = '#1a1a35';
     gctx.fillRect(0, 0, 300, 300);
 
+    // frame
     if (item.frame === 'ornate') drawOrnateFrame(gctx, 300, 300, item.color);
     else if (item.frame === 'geometric') drawGeometricFrame(gctx, 300, 300, item.color);
     else if (item.frame === 'floral') drawFloralFrame(gctx, 300, 300, item.color);
@@ -396,11 +417,13 @@ function showToast(msg) {
 
 // ── Event Listeners ─────────────────────────────────────
 function initEvents() {
+  // Text input
   document.getElementById('nameInput').addEventListener('input', e => {
     state.text = e.target.value;
     render();
   });
 
+  // Font buttons
   document.getElementById('fontGrid').addEventListener('click', e => {
     const btn = e.target.closest('.font-btn');
     if (!btn) return;
@@ -411,6 +434,7 @@ function initEvents() {
     render();
   });
 
+  // Color palette
   document.getElementById('colorPalette').addEventListener('click', e => {
     const btn = e.target.closest('.color-btn');
     if (!btn) return;
@@ -433,12 +457,14 @@ function initEvents() {
     render();
   });
 
+  // Font size
   document.getElementById('fontSize').addEventListener('input', e => {
     state.fontSize = parseInt(e.target.value);
     document.getElementById('sizeLabel').textContent = state.fontSize;
     render();
   });
 
+  // Frame
   document.getElementById('frameGrid').addEventListener('click', e => {
     const btn = e.target.closest('.frame-btn');
     if (!btn) return;
@@ -448,11 +474,13 @@ function initEvents() {
     render();
   });
 
+  // Background
   document.querySelectorAll('.bg-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.bg-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       state.bgPreview = btn.dataset.bg;
+      // Update wrapper background to match
       const wrapper = document.getElementById('previewWrapper');
       if (state.bgPreview === 'white') wrapper.style.background = '#ffffff';
       else if (state.bgPreview === 'dark') wrapper.style.background = '#0d0d1a';
@@ -462,9 +490,11 @@ function initEvents() {
     });
   });
 
+  // Downloads
   document.getElementById('downloadPNG').addEventListener('click', () => downloadCanvas(true));
   document.getElementById('downloadPNGbg').addEventListener('click', () => downloadCanvas(false));
 
+  // Nav active highlight on scroll
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
   const observer = new IntersectionObserver(entries => {
@@ -481,6 +511,7 @@ function initEvents() {
 
 // ── Init ────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  // Wait for fonts
   document.fonts.ready.then(() => {
     render();
     buildGallery();
