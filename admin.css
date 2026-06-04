@@ -1,4 +1,6 @@
-/* مخطوط - Admin Dashboard Styles */
+/* ==========================================================================
+   مخطوط — Admin Dashboard Styles
+   ========================================================================== */
 
 :root{
   --gold:#c9a84c;
@@ -22,13 +24,15 @@ body{
   min-height:100vh;
 }
 
-/* ============ Scrollbar ============ */
+/* ---- Scrollbar ---------------------------------------------------------- */
 ::-webkit-scrollbar{ width:10px; height:10px; }
 ::-webkit-scrollbar-track{ background:var(--deep2); }
 ::-webkit-scrollbar-thumb{ background:var(--gold-dark); border-radius:5px; }
 ::-webkit-scrollbar-thumb:hover{ background:var(--gold); }
 
-/* ============ Login Screen ============ */
+/* ==========================================================================
+   Login Screen
+   ========================================================================== */
 .login-screen{
   position:fixed;
   inset:0;
@@ -37,6 +41,7 @@ body{
   justify-content:center;
   background:radial-gradient(circle at 50% 30%, var(--deep2), var(--deep));
   padding:20px;
+  z-index:300;
 }
 
 .login-box{
@@ -47,24 +52,24 @@ body{
   -webkit-backdrop-filter:blur(14px);
   border:1px solid var(--border);
   border-radius:20px;
-  padding:40px 32px;
+  padding:42px 32px;
   text-align:center;
   box-shadow:0 20px 60px rgba(0,0,0,0.5);
 }
 
 .login-logo{
   font-family:'Amiri',serif;
-  font-size:46px;
+  font-size:48px;
   font-weight:700;
   color:var(--gold);
-  margin-bottom:6px;
+  line-height:1.1;
 }
 
-.login-title{
-  font-size:20px;
+.login-sub{
+  font-size:18px;
   color:var(--text-muted);
   font-weight:500;
-  margin-bottom:26px;
+  margin:6px 0 26px;
 }
 
 .login-input{
@@ -85,7 +90,7 @@ body{
   color:#e06666;
   font-size:14px;
   min-height:20px;
-  margin-bottom:8px;
+  margin-bottom:6px;
 }
 
 .btn-login{
@@ -109,14 +114,16 @@ body{
   color:var(--text-muted);
 }
 
-/* ============ Admin App Layout ============ */
+/* ==========================================================================
+   App Layout
+   ========================================================================== */
 .admin-app{
   display:grid;
   grid-template-columns:250px 1fr;
   min-height:100vh;
 }
 
-/* ============ Sidebar ============ */
+/* ---- Sidebar ------------------------------------------------------------ */
 .sidebar{
   position:sticky;
   top:0;
@@ -132,11 +139,11 @@ body{
 
 .sidebar-brand{
   text-align:center;
-  padding:0 20px 24px;
+  padding:0 20px 22px;
   border-bottom:1px solid var(--border);
-  margin-bottom:18px;
+  margin-bottom:16px;
 }
-.brand-name{
+.brand-title{
   display:block;
   font-family:'Amiri',serif;
   font-size:32px;
@@ -181,7 +188,7 @@ body{
 .sidebar-footer{
   padding:18px 20px 0;
   border-top:1px solid var(--border);
-  margin-top:18px;
+  margin-top:16px;
   display:flex;
   flex-direction:column;
   gap:12px;
@@ -206,7 +213,7 @@ body{
 }
 .btn-logout:hover{ background:rgba(224,102,102,0.12); }
 
-/* ============ Main ============ */
+/* ---- Main --------------------------------------------------------------- */
 .admin-main{
   display:flex;
   flex-direction:column;
@@ -248,12 +255,14 @@ body{
 }
 .topbar-link:hover{ text-decoration:underline; }
 
-.admin-content{
+.panels-wrap{
   padding:28px;
   flex:1;
 }
 
-/* ============ Panels ============ */
+/* ==========================================================================
+   Panels
+   ========================================================================== */
 .admin-panel{ display:none; }
 .admin-panel.active{ display:block; }
 
@@ -265,19 +274,19 @@ body{
   flex-wrap:wrap;
   gap:12px;
 }
-.panel-header h3{
+.panel-header h2{
   font-size:24px;
   color:var(--gold);
   font-weight:700;
 }
 
-.section-title{
+.section-heading{
   font-size:20px;
   color:var(--gold);
   margin:8px 0 16px;
 }
 
-/* ============ Stat Cards ============ */
+/* ---- Stat cards --------------------------------------------------------- */
 .stat-cards{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -307,7 +316,7 @@ body{
   margin-top:6px;
 }
 
-/* ============ Quick Actions ============ */
+/* ---- Quick actions ------------------------------------------------------ */
 .quick-actions{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -323,7 +332,7 @@ body{
   font-size:16px;
   font-weight:500;
   cursor:pointer;
-  transition:background .15s, transform .15s;
+  transition:background .15s, transform .15s, border-color .15s;
 }
 .quick-btn:hover{
   background:var(--surface);
@@ -339,7 +348,9 @@ body{
   border-color:#e06666;
 }
 
-/* ============ Buttons ============ */
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
 .btn-add{
   padding:10px 20px;
   background:linear-gradient(135deg,var(--gold),var(--gold-dark));
@@ -364,6 +375,7 @@ body{
   font-size:15px;
   font-weight:700;
   cursor:pointer;
+  transition:box-shadow .15s, transform .15s;
 }
 .btn-save:hover{ box-shadow:0 6px 16px rgba(201,168,76,0.3); }
 
@@ -376,6 +388,7 @@ body{
   font-family:inherit;
   font-size:15px;
   cursor:pointer;
+  transition:background .15s, color .15s;
 }
 .btn-cancel:hover{ background:var(--surface2); color:var(--text); }
 
@@ -394,7 +407,9 @@ body{
 }
 .btn-save-settings:hover{ transform:translateY(-2px); }
 
-/* ============ Item Form ============ */
+/* ==========================================================================
+   Item form (gallery)
+   ========================================================================== */
 .item-form{
   background:var(--surface);
   border:1px solid var(--border);
@@ -402,7 +417,7 @@ body{
   padding:26px;
   margin-bottom:26px;
 }
-.item-form h4{
+.item-form h3{
   color:var(--gold);
   font-size:20px;
   margin-bottom:20px;
@@ -411,21 +426,22 @@ body{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:18px;
+  align-items:start;
 }
-.form-field{
+.form-grid > label,
+.settings-form > label{
   display:flex;
   flex-direction:column;
   gap:8px;
-}
-.form-field label{
   font-size:14px;
   color:var(--text-muted);
 }
-.form-field input[type=text],
-.form-field input[type=password],
-.form-field select,
-.form-field textarea,
-.settings-form input,
+
+/* shared input styling */
+.form-grid input[type=text],
+.form-grid select,
+.settings-form input[type=text],
+.settings-form input[type=password],
 .settings-form textarea{
   padding:11px 14px;
   background:var(--surface2);
@@ -436,15 +452,14 @@ body{
   font-size:15px;
   direction:rtl;
 }
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus,
+.form-grid input:focus,
+.form-grid select:focus,
 .settings-form input:focus,
 .settings-form textarea:focus{
   outline:none;
   border-color:var(--gold);
 }
-.form-field input[type=color]{
+.form-grid input[type=color]{
   width:60px;
   height:42px;
   padding:3px;
@@ -453,21 +468,29 @@ body{
   border-radius:10px;
   cursor:pointer;
 }
-.form-field input[type=range]{
-  accent-color:var(--gold);
+.form-grid input[type=range]{ accent-color:var(--gold); }
+#gfSizeLabel{ color:var(--gold); font-weight:700; }
+
+.form-preview{
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 .form-preview canvas{
   border:1px solid var(--border);
   border-radius:12px;
   background:var(--surface);
 }
+
 .form-actions{
   display:flex;
   gap:12px;
   margin-top:22px;
 }
 
-/* ============ Data Table ============ */
+/* ==========================================================================
+   Data table
+   ========================================================================== */
 .data-table{
   width:100%;
   border-collapse:collapse;
@@ -498,9 +521,11 @@ body{
   border:1px solid var(--border);
   border-radius:8px;
   background:var(--surface);
+  display:block;
 }
 
-.btn-row{
+.btn-edit,
+.btn-delete{
   padding:6px 14px;
   border:none;
   border-radius:8px;
@@ -515,13 +540,15 @@ body{
   color:var(--gold);
 }
 .btn-edit:hover{ background:rgba(201,168,76,0.35); }
-.btn-del{
+.btn-delete{
   background:rgba(224,102,102,0.18);
   color:#e06666;
 }
-.btn-del:hover{ background:rgba(224,102,102,0.32); }
+.btn-delete:hover{ background:rgba(224,102,102,0.32); }
 
-/* ============ Settings Form ============ */
+/* ==========================================================================
+   Settings / Security form
+   ========================================================================== */
 .settings-form{
   display:flex;
   flex-direction:column;
@@ -539,7 +566,9 @@ body{
 }
 .pass-msg.error{ color:#e06666; }
 
-/* ============ Occasions Editor ============ */
+/* ==========================================================================
+   Occasions editor
+   ========================================================================== */
 .occasions-editor{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
@@ -596,9 +625,11 @@ body{
 }
 .occ-fields input[type=range]{ accent-color:var(--gold); }
 .occ-size-label{ color:var(--gold); font-weight:700; }
-.occ-save{ margin-top:6px; }
+.occ-save{ margin-top:6px; align-self:flex-start; }
 
-/* ============ Toast ============ */
+/* ==========================================================================
+   Toast
+   ========================================================================== */
 .admin-toast{
   position:fixed;
   bottom:-80px;
@@ -624,7 +655,9 @@ body{
   color:#fff;
 }
 
-/* ============ Responsive ============ */
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
 @media (max-width:860px){
   .stat-cards{ grid-template-columns:repeat(2,1fr); }
 }
@@ -642,7 +675,7 @@ body{
   .admin-app.sidebar-open .sidebar{ right:0; }
   .sidebar-toggle{ display:block; }
   .form-grid{ grid-template-columns:1fr; }
-  .admin-content{ padding:18px; }
+  .panels-wrap{ padding:18px; }
   .data-table{ display:block; overflow-x:auto; }
 }
 
